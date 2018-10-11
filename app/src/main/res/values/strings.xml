@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Caderneta</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Add Expense Activity -->
+    <string name="title_add_expense_activity">Add Expense</string>
+    <string name="b_save_expense">Save expense</string>
+    <string name="h_expense_name">Description, e.g. Phone bill</string>
+    <string name="h_expense_value">0.00</string>
+</resources>

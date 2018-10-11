@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewExpenseActivity">
+
+
+    <EditText
+        android:id="@+id/eExpenseValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:imeOptions="actionNext|flagNoFullscreen"
+        android:hint="@string/h_expense_value"
+        />
+
+    <EditText
+        android:id="@+id/eExpenseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textCapSentences"
+        android:imeOptions="actionDone|flagNoFullscreen"
+        android:hint="@string/h_expense_name"
+        />
+
+    <Button
+        android:id="@+id/bSaveExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/b_save_expense" />
+
+</LinearLayout>
