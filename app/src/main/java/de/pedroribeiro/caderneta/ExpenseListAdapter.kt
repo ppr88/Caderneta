@@ -1,11 +1,14 @@
 package de.pedroribeiro.caderneta
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import de.pedroribeiro.caderneta.model.Expense
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
 
 class ExpenseListAdapter() : RecyclerView.Adapter<ExpenseListAdapter.ExpenseListViewHolder>() {
 
@@ -16,7 +19,11 @@ class ExpenseListAdapter() : RecyclerView.Adapter<ExpenseListAdapter.ExpenseList
         }
 
     class ExpenseListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val expenseNameView: TextView = itemView.findViewById(R.id.expenseListTextView)
+        val icon: ImageView = itemView.findViewById(R.id.iExpenseListCategory)
+        val category: TextView = itemView.findViewById(R.id.tExpenseListCategory)
+        val description: TextView = itemView.findViewById(R.id.tExpenseListDescription)
+        val value: TextView = itemView.findViewById(R.id.tExpenseListValue)
+        val date: TextView = itemView.findViewById(R.id.tExpenseListDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseListViewHolder {
@@ -26,12 +33,24 @@ class ExpenseListAdapter() : RecyclerView.Adapter<ExpenseListAdapter.ExpenseList
     }
 
     override fun onBindViewHolder(holder: ExpenseListViewHolder, position: Int) {
-        val list = expenses
+
+         val list = expenses
         if (list != null && list.isNotEmpty()) {
-            holder.expenseNameView.text = list[position].toString()
+            //TODO: set the icon
+            //TODO: prepare category name translation
+            holder.category.text = list[position].category.name
+            holder.description.text = list[position].description
+            //TODO: format currency
+            val numberFormat = NumberFormat.getInstance()
+            numberFormat.minimumFractionDigits = 2
+            numberFormat.maximumFractionDigits = 2
+            holder.value.text = numberFormat.currency.symbol + numberFormat.format(list[position].value)
+            val dateFormat = SimpleDateFormat("dd MMM, yyyy")
+            holder.date.text = dateFormat.format(list[position].spendDate)
         }
         else {
-            holder.expenseNameView.text = "Start by adding an expense"
+            //TODO: change the item view to something else
+            holder.category.text = "Start by adding an expense"
         }
     }
 

@@ -2,6 +2,10 @@
     <string name="app_name">Caderneta</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Main Activity -->
+    <string name="t_expenses">Expenses</string>
+    <string name="cd_list_item_category">Expense category</string>
+
     <!-- Add Expense Activity -->
     <string name="title_add_expense_activity">Add Expense</string>
     <string name="b_save_expense">Save expense</string>

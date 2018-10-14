@@ -1,13 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lExpenseListItem"
+    android:layout_width="wrap_content"
+    android:layout_height="72dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp">
 
-    <TextView
-        android:id="@+id/expenseListTextView"
-        style="@style/ExpenseListItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light" />
-</LinearLayout>
+    <ImageView
+        android:id="@+id/iExpenseListCategory"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/cd_list_item_category"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/ic_android_primary_24dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iExpenseListCategory"
+        android:layout_toEndOf="@id/iExpenseListCategory"
+        android:paddingRight="4dp"
+        android:paddingLeft="4dp"
+        android:background="@drawable/bottom_border_primary_lightest">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:id="@+id/tExpenseListCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:textStyle="bold"
+                tools:text="Restaurant" />
+
+            <TextView
+                android:id="@+id/tExpenseListDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:textColor="@color/primaryTextColorLight"
+                tools:text="Sushi dinner with Nadia" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lExpenseListMeta"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tExpenseListValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:maxLines="1"
+                tools:text="€34,00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/secondaryColor" />
+
+            <TextView
+                android:id="@+id/tExpenseListDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:textColor="@color/primaryTextColorLight"
+                tools:text="19 May, 2018" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

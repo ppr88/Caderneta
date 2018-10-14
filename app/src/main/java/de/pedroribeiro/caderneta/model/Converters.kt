@@ -1,6 +1,6 @@
 package de.pedroribeiro.caderneta.model
 
-import android.arch.persistence.room.TypeConverter
+import androidx.room.TypeConverter
 import java.lang.IllegalArgumentException
 import java.util.*
 

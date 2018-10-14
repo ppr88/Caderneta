@@ -1,9 +1,9 @@
 package de.pedroribeiro.caderneta.model
 
-import android.arch.persistence.room.PrimaryKey
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.ColumnInfo
-import android.support.annotation.NonNull
+import androidx.room.PrimaryKey
+import androidx.room.Entity
+import androidx.room.ColumnInfo
+import androidx.annotation.NonNull
 
 import java.util.*
 
@@ -12,7 +12,7 @@ import java.util.*
 data class Expense(@PrimaryKey(autoGenerate = true)     var id: Long?,
                    @NonNull @ColumnInfo(name = "value") var value: Double,
                    @ColumnInfo(name = "category")       var category: Category = Category.Other,
-                   @ColumnInfo(name = "name")           var name: String? = null,
+                   @ColumnInfo(name = "description")    var description: String? = null,
                    @ColumnInfo(name = "spent_at")       var spendDate: Date = Calendar.getInstance().time) {
 
     companion object {
