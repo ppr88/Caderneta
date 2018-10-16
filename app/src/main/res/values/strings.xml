@@ -11,4 +11,15 @@
     <string name="b_save_expense">Save expense</string>
     <string name="h_expense_name">Description, e.g. Phone bill</string>
     <string name="h_expense_value">0.00</string>
+
+    <!-- Default expense categories -->
+    <string name="t_category_food">Food</string>
+    <string name="t_category_supermarket">Supermarket</string>
+    <string name="t_category_bills">Bills</string>
+    <string name="t_category_shopping">Shopping</string>
+    <string name="t_category_travel">Travel</string>
+    <string name="t_category_transportation">Transportation</string>
+    <string name="t_category_leisure">Leisure</string>
+    <string name="t_category_rent">Rent</string>
+    <string name="t_category_other">Other</string>
 </resources>

@@ -45,7 +45,7 @@ class NewExpenseActivity : AppCompatActivity() {
             else {
                 val value = eExpenseValue.text.toString().toDouble()
                 val name = eExpenseName.text.toString()
-                val expense = Expense(null, value, Expense.Category.Other, name)
+                val expense = Expense(null, value, 8, name)
                 val expenseViewModel = ViewModelProviders.of(this)
                         .get(ExpenseViewModel::class.java)
                 expenseViewModel.insert(expense)

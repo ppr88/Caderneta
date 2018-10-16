@@ -18,6 +18,10 @@ interface ExpenseDao {
     @Query("DELETE FROM expense")
     fun deleteAll()
 
-    @Query("SELECT * FROM expense ORDER BY spent_at ASC")
+    @Query("SELECT * FROM expense ORDER BY spent_at DESC")
     fun getAllExpenses() : LiveData<List<Expense>>
+
+    @Query("SELECT expense.*, category.* FROM expense INNER JOIN category ON expense.cat_id = category.category_id ORDER BY spent_at DESC")
+
+    fun getAllExpensesWithCategory() : LiveData<List<ExpenseWithCategory>>
 }

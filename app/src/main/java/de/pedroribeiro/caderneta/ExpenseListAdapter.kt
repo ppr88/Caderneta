@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import de.pedroribeiro.caderneta.model.Expense
-import java.text.NumberFormat
-import java.text.SimpleDateFormat
+import androidx.core.content.ContextCompat
+import de.pedroribeiro.caderneta.model.ExpenseWithCategory
 
-class ExpenseListAdapter() : RecyclerView.Adapter<ExpenseListAdapter.ExpenseListViewHolder>() {
+class ExpenseListAdapter : RecyclerView.Adapter<ExpenseListAdapter.ExpenseListViewHolder>() {
 
-    var expenses: List<Expense>? = null
+    var expenses: List<ExpenseWithCategory>? = null
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -34,19 +33,26 @@ class ExpenseListAdapter() : RecyclerView.Adapter<ExpenseListAdapter.ExpenseList
 
     override fun onBindViewHolder(holder: ExpenseListViewHolder, position: Int) {
 
-         val list = expenses
+        val list = expenses
         if (list != null && list.isNotEmpty()) {
-            //TODO: set the icon
-            //TODO: prepare category name translation
-            holder.category.text = list[position].category.name
-            holder.description.text = list[position].description
-            //TODO: format currency
-            val numberFormat = NumberFormat.getInstance()
-            numberFormat.minimumFractionDigits = 2
-            numberFormat.maximumFractionDigits = 2
-            holder.value.text = numberFormat.currency.symbol + numberFormat.format(list[position].value)
-            val dateFormat = SimpleDateFormat("dd MMM, yyyy")
-            holder.date.text = dateFormat.format(list[position].spendDate)
+            //just getting the context from any view
+            val context = holder.category.context
+
+            //the icon name of the category is stored in the database
+            //now I get the resource ID from this icon name...
+            val categoryIconId = context.resources.getIdentifier(list[position].category.iconId, "drawable", context.packageName)
+            //...and finally set the resource to the ImageView
+            holder.icon.setImageResource(categoryIconId)
+
+            //the string name of the category is stored in the database
+            //now I get the resource ID from this string name...
+            val categoryTextId = context.resources.getIdentifier(list[position].category.labelId, "string", context.packageName)
+            //...and finally set the text to the category TextView
+            holder.category.text = context.getString(categoryTextId)
+
+            holder.description.text = list[position].expense.description
+            holder.value.text = DateCurrencyFormat.format(list[position].expense.value)
+            holder.date.text = DateCurrencyFormat.format(list[position].expense.spendDate)
         }
         else {
             //TODO: change the item view to something else

@@ -23,21 +23,5 @@ class Converters {
         fun dateToTimestamp(date: Date): Long {
             return date.time
         }
-
-        @TypeConverter
-        @JvmStatic
-        fun categoryFromString(value: String): Expense.Category {
-            return try {
-                Expense.Category.valueOf(value)
-            } catch (e: IllegalArgumentException) {
-                Expense.Category.Other
-            }
-        }
-
-        @TypeConverter
-        @JvmStatic
-        fun categoryToString(category: Expense.Category): String {
-            return category.name
-        }
     }
 }

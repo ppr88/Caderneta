@@ -7,9 +7,9 @@ import android.os.AsyncTask
 class ExpenseRepository(application: Application) {
 
     private val expenseDao: ExpenseDao = AppRoomDatabase.getInstance(application).expenseDao()
-    private val allExpenses: LiveData<List<Expense>> = expenseDao.getAllExpenses()
+    private val allExpenses: LiveData<List<ExpenseWithCategory>> = expenseDao.getAllExpensesWithCategory()
 
-    fun getAllExpenses(): LiveData<List<Expense>> {
+    fun getAllExpensesWithCategory(): LiveData<List<ExpenseWithCategory>> {
         return allExpenses
     }
 
@@ -19,7 +19,7 @@ class ExpenseRepository(application: Application) {
 
     private class InsertAsyncTask(private val dao: ExpenseDao) : AsyncTask<Expense, Unit, Unit>() {
 
-        override fun doInBackground(vararg params: Expense): Unit {
+        override fun doInBackground(vararg params: Expense) {
             dao.insert(params[0])
             return
         }
