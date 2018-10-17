@@ -25,7 +25,9 @@
             android:id="@+id/expenseListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/expense_list_item" />
+            tools:listitem="@layout/expense_list_item"
+            android:clipToPadding="false"
+            android:paddingBottom="56dp"/>
     </LinearLayout>
 
 </LinearLayout>

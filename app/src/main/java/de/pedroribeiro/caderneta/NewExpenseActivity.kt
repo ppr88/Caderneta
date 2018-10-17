@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import android.text.TextUtils
 import android.content.Intent
+import de.pedroribeiro.caderneta.model.Category
 import de.pedroribeiro.caderneta.model.Expense
 
 
@@ -37,7 +38,7 @@ class NewExpenseActivity : AppCompatActivity() {
          *  - save expense to database
          *  - return success or fail to main activity
          */
-        bSaveExpense.setOnClickListener {view ->
+        bSaveExpense.setOnClickListener {
             val replyIntent = Intent()
             if (eExpenseValue.text.isEmpty()) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
@@ -45,7 +46,7 @@ class NewExpenseActivity : AppCompatActivity() {
             else {
                 val value = eExpenseValue.text.toString().toDouble()
                 val name = eExpenseName.text.toString()
-                val expense = Expense(null, value, 8, name)
+                val expense = Expense(null, value, Category.CATEGORY_ID_OTHER, name)
                 val expenseViewModel = ViewModelProviders.of(this)
                         .get(ExpenseViewModel::class.java)
                 expenseViewModel.insert(expense)
