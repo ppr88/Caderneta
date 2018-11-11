@@ -9,21 +9,21 @@ import java.util.*
 
 
 @Entity
-data class Category(@PrimaryKey @ColumnInfo(name = "category_id")   var id: Long,
+data class Category(@PrimaryKey @ColumnInfo(name = "category_id")   var id: Int,
                     @NonNull @ColumnInfo(name = "name")             var name: String,
                     @NonNull @ColumnInfo(name = "label_id")         var labelId: String,
                     @ColumnInfo(name = "icon_id")                   var iconId: String? = null) {
 
     companion object {
-        const val CATEGORY_ID_FOOD: Long = 0
-        const val CATEGORY_ID_SUPERMARKET: Long = 1
-        const val CATEGORY_ID_BILLS: Long = 2
-        const val CATEGORY_ID_SHOPPING: Long = 3
-        const val CATEGORY_ID_TRAVEL: Long = 4
-        const val CATEGORY_ID_TRANSPORTATION: Long = 5
-        const val CATEGORY_ID_LEISURE: Long = 6
-        const val CATEGORY_ID_RENT: Long = 7
-        const val CATEGORY_ID_OTHER: Long = 8
+        const val CATEGORY_ID_FOOD: Int = 0
+        const val CATEGORY_ID_SUPERMARKET: Int = 1
+        const val CATEGORY_ID_BILLS: Int = 2
+        const val CATEGORY_ID_SHOPPING: Int = 3
+        const val CATEGORY_ID_TRAVEL: Int = 4
+        const val CATEGORY_ID_TRANSPORTATION: Int = 5
+        const val CATEGORY_ID_LEISURE: Int = 6
+        const val CATEGORY_ID_RENT: Int = 7
+        const val CATEGORY_ID_OTHER: Int = 8
 
         val defaultCategories: List<Category> = listOf(
                 Category(CATEGORY_ID_FOOD, "Food", "t_category_food","ic_category_food"),

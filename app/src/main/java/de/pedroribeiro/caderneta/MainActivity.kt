@@ -42,8 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         // clicking on FAB opens activity to add a new expense
         fab.setOnClickListener {
-            Log.i(TAG, "FAB clicked")
-            startActivity(Intent(this, NewExpenseActivity::class.java))
+            startActivity(Intent(this, CategorySelectActivity::class.java))
         }
     }
 

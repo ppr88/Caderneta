@@ -22,4 +22,6 @@
     <string name="t_category_leisure">Leisure</string>
     <string name="t_category_rent">Rent</string>
     <string name="t_category_other">Other</string>
+    <string name="t_select_category">Select a category</string>
+    <string name="t_category">Category</string>
 </resources>

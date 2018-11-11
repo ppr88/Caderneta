@@ -38,16 +38,16 @@ class ExpenseListAdapter : RecyclerView.Adapter<ExpenseListAdapter.ExpenseListVi
             //just getting the context from any view
             val context = holder.category.context
 
-            //the icon name of the category is stored in the database
+            //the icon name of the categories is stored in the database
             //now I get the resource ID from this icon name...
             val categoryIconId = context.resources.getIdentifier(list[position].category.iconId, "drawable", context.packageName)
             //...and finally set the resource to the ImageView
             holder.icon.setImageResource(categoryIconId)
 
-            //the string name of the category is stored in the database
+            //the string name of the categories is stored in the database
             //now I get the resource ID from this string name...
             val categoryTextId = context.resources.getIdentifier(list[position].category.labelId, "string", context.packageName)
-            //...and finally set the text to the category TextView
+            //...and finally set the text to the categories TextView
             holder.category.text = context.getString(categoryTextId)
 
             holder.description.text = list[position].expense.description

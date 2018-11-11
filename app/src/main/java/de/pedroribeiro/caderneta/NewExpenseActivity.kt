@@ -28,6 +28,10 @@ class NewExpenseActivity : AppCompatActivity() {
 
         Log.d(TAG, "${this::class.qualifiedName}: onCreate executed")
 
+        //ID of the category selected by the user in the previous screen
+        val categoryId = intent.getIntExtra(EXTRA_CATEGORY_ID, Category.CATEGORY_ID_OTHER)
+
+
         bSaveExpense = findViewById(R.id.bSaveExpense)
         eExpenseName = findViewById(R.id.eExpenseName)
         eExpenseValue = findViewById(R.id.eExpenseValue)
@@ -39,20 +43,22 @@ class NewExpenseActivity : AppCompatActivity() {
          *  - return success or fail to main activity
          */
         bSaveExpense.setOnClickListener {
-            val replyIntent = Intent()
+            val replyIntent = Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
             if (eExpenseValue.text.isEmpty()) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             }
             else {
                 val value = eExpenseValue.text.toString().toDouble()
                 val name = eExpenseName.text.toString()
-                val expense = Expense(null, value, Category.CATEGORY_ID_OTHER, name)
+                val expense = Expense(null, value, categoryId, name)
                 val expenseViewModel = ViewModelProviders.of(this)
                         .get(ExpenseViewModel::class.java)
                 expenseViewModel.insert(expense)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
-            finish()
+            startActivity(replyIntent)
         }
     }
 }

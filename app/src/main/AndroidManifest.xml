@@ -14,15 +14,20 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".CategorySelectActivity"
+            android:label="Select Category"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
             android:name=".NewExpenseActivity"
             android:label="@string/title_add_expense_activity"
-            android:theme="@style/AppTheme.NoActionBar">
-
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".CategorySelectActivity">
         </activity>
     </application>
 

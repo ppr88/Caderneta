@@ -15,7 +15,7 @@ import java.util.*
         indices = [Index("cat_id")])
 data class Expense(@PrimaryKey(autoGenerate = true)     var id: Long?,
                    @NonNull @ColumnInfo(name = "value") var value: Double,
-                   @ColumnInfo(name = "cat_id")         var category_id: Long = Category.CATEGORY_ID_OTHER,
+                   @ColumnInfo(name = "cat_id")         var category_id: Int = Category.CATEGORY_ID_OTHER,
                    @ColumnInfo(name = "description")    var description: String? = null,
                    @ColumnInfo(name = "spent_at")       var spendDate: Date = Calendar.getInstance().time) {
 
