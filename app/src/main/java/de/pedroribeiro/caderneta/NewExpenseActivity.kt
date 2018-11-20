@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import android.text.TextUtils
 import android.content.Intent
+import com.google.android.material.textfield.TextInputEditText
 import de.pedroribeiro.caderneta.model.Category
 import de.pedroribeiro.caderneta.model.Expense
 
@@ -19,7 +20,7 @@ class NewExpenseActivity : AppCompatActivity() {
     public val TAG = "CadernetaApp"
 
     private lateinit var bSaveExpense: Button
-    private lateinit var eExpenseName: EditText
+    private lateinit var eExpenseName: TextInputEditText
     private lateinit var eExpenseValue: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {

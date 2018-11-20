@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="de.pedroribeiro.caderneta">
 
     <application
@@ -8,10 +9,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/title_main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,15 +21,17 @@
         </activity>
         <activity
             android:name=".CategorySelectActivity"
-            android:label="Select Category"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/title_select_category_activity"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".NewExpenseActivity"
             android:label="@string/title_add_expense_activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".CategorySelectActivity">
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".CategorySelectActivity"
+            android:windowSoftInputMode = "stateVisible|adjustResize"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -3,13 +3,18 @@
     <string name="action_settings">Settings</string>
 
     <!-- Main Activity -->
+    <string name="title_main_activity">Your expenses</string>
     <string name="t_expenses">Expenses</string>
     <string name="cd_list_item_category">Expense category</string>
 
+    <!-- Select Category Activity -->
+    <string name="title_select_category_activity">Select category</string>
+    <string name="t_select_category">Select a category</string>
+
     <!-- Add Expense Activity -->
-    <string name="title_add_expense_activity">Add Expense</string>
+    <string name="title_add_expense_activity">Add expense</string>
     <string name="b_save_expense">Save expense</string>
-    <string name="h_expense_name">Description, e.g. Phone bill</string>
+    <string name="h_expense_name">Description</string>
     <string name="h_expense_value">0.00</string>
 
     <!-- Default expense categories -->
@@ -22,6 +27,6 @@
     <string name="t_category_leisure">Leisure</string>
     <string name="t_category_rent">Rent</string>
     <string name="t_category_other">Other</string>
-    <string name="t_select_category">Select a category</string>
     <string name="t_category">Category</string>
+    <string name="ht_expense_name">Optional</string>
 </resources>
