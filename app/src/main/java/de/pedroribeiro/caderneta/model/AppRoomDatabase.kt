@@ -21,13 +21,15 @@ abstract class AppRoomDatabase : RoomDatabase() {
     abstract fun categoryDao(): CategoryDao
 
     companion object {
+
+        private const val DB_NAME = "CadernetaDatabase"
         private var INSTANCE: AppRoomDatabase? = null
 
         fun getInstance(context: Context) : AppRoomDatabase {
 
             if (INSTANCE == null) {
-                INSTANCE = Room.inMemoryDatabaseBuilder(context.applicationContext,
-                        AppRoomDatabase::class.java)
+                INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        AppRoomDatabase::class.java, DB_NAME)
                         .addCallback(DbPopulator)
                         .build()
             }
@@ -42,8 +44,8 @@ abstract class AppRoomDatabase : RoomDatabase() {
     //Singleton to populate the DB with dummy values for test purposes
     object DbPopulator : RoomDatabase.Callback() {
         @Override
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
             INSTANCE?.let {
                 PopulateDbAsync(it).execute(Category.defaultCategories, Expense.samples)
             } ?: throw NullPointerException("Tried to populate db before initialization")

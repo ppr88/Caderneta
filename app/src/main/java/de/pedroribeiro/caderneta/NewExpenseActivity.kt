@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import android.text.TextUtils
 import android.content.Intent
 import com.google.android.material.textfield.TextInputEditText
 import de.pedroribeiro.caderneta.model.Category
 import de.pedroribeiro.caderneta.model.Expense
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
+
+
 
 
 class NewExpenseActivity : AppCompatActivity() {
@@ -60,6 +62,17 @@ class NewExpenseActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             startActivity(replyIntent)
+        }
+
+        /* if user clicks on "Done" in the soft keyboard:
+         *  - perform a click on the save expense button
+         */
+        eExpenseValue.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                bSaveExpense.performClick()
+                true
+            }
+            else false
         }
     }
 }

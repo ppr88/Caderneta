@@ -15,7 +15,7 @@
     <string name="title_add_expense_activity">Add expense</string>
     <string name="b_save_expense">Save expense</string>
     <string name="h_expense_name">Description</string>
-    <string name="h_expense_value">0.00</string>
+    <string name="h_expense_value">Amount</string>
 
     <!-- Default expense categories -->
     <string name="t_category_food">Food</string>
