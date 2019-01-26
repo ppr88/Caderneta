@@ -6,15 +6,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.content.Intent
+import android.text.Editable
+import android.text.TextWatcher
 import com.google.android.material.textfield.TextInputEditText
 import de.pedroribeiro.caderneta.model.Category
 import de.pedroribeiro.caderneta.model.Expense
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
-
-
+import de.pedroribeiro.caderneta.view.CurrencyEditText
+import kotlin.math.pow
 
 
 class NewExpenseActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class NewExpenseActivity : AppCompatActivity() {
 
     private lateinit var bSaveExpense: Button
     private lateinit var eExpenseName: TextInputEditText
-    private lateinit var eExpenseValue: EditText
+    private lateinit var eExpenseValue: CurrencyEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +49,14 @@ class NewExpenseActivity : AppCompatActivity() {
             val replyIntent = Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
-            if (eExpenseValue.text.isEmpty()) {
+            if (eExpenseValue.text.isNullOrEmpty()) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             }
             else {
-                val value = eExpenseValue.text.toString().toDouble()
+                //raw value returns an integer value, e.g. R$10,40 would be returned as 1040
+                //we must then convert it to decimals that can vary depending on the currency
+                //we can also get the number of decimal digits for this currency from the CurrencyEditText
+                val value = eExpenseValue.rawValue / ((10.0).pow(eExpenseValue.decimalDigits))
                 val name = eExpenseName.text.toString()
                 val expense = Expense(null, value, categoryId, name)
                 val expenseViewModel = ViewModelProviders.of(this)
@@ -74,5 +77,20 @@ class NewExpenseActivity : AppCompatActivity() {
             }
             else false
         }
+
+        /**
+         * Disable the save button if the value input is empty or zero
+         */
+        eExpenseValue.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                bSaveExpense.isEnabled = !(p0.isNullOrBlank() || eExpenseValue.rawValue == 0L)
+            }
+        })
     }
 }

@@ -7,6 +7,7 @@
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="editTextStyle">@style/EditTextStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
@@ -23,9 +24,15 @@
         <item name="android:textSize">28sp</item>
     </style>
 
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+    <style name="TextInputEditTextStyle" parent="Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
 
-    <style name="ExpenseListItem">
-
+    <style name="EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
 </resources>
